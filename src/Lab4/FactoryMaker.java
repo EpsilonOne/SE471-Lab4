@@ -1,36 +1,45 @@
 package Lab4;
 
-public class FactoryMaker {
+public class FactoryMaker
+{
+    //Object used for singleton instantiation locking
+    private static final Object INSTANCE_LOCK = new Object();
 
     //The single instance of this class
+    private static FactoryMaker myInstance = null;
 
-    private static FactoryMaker myInstance = new FactoryMaker();
+    public static enum Mode
+    {
+        BEGINNER, INTERMEDIATE, ADVANCED;
+    }
 
-    public final static String BEGINNER = "beginner";
-    public final static String INTERMEDIATE = "intermediate";
-    public final static String ADVANCED = "advanced";
+    private FactoryMaker()
+    {
+        //use private constructor to limit factory maker creation
+    }//private constructor
 
-    public static FactoryMaker getInstance(){
+    public static FactoryMaker getInstance()
+    {
+        synchronized(INSTANCE_LOCK)
+        {
+            if (myInstance == null)
+                myInstance = new FactoryMaker();
+        }
         return myInstance;
     }//getInstance()
 
     //Return new object that implements the ModeFactoryIF for given type.
-    public ModeFactoryIF createFactory(String type){
-        switch (type) {
+    public ModeFactoryIF createFactory(Mode mode)
+    {
+        switch (mode) {
             case BEGINNER:
-                System.out.println("\nBeginner game Mode Initialized");
                 return new BeginnerFactory();
-
             case INTERMEDIATE:
-                System.out.println("\nIntermediate Game Mode Initialized");
                 return new IntermediateFactory();
-
             case ADVANCED:
-                System.out.println("\nAdvanced Game Mode Initialized");
                 return new AdvancedFactory();
-
             default:
-                String errMsg = type;
+                String errMsg = mode.name();
                 throw new IllegalArgumentException(errMsg);
         }
     }

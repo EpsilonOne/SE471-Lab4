@@ -1,41 +1,28 @@
 package Lab4;
 
-public class Client {
-    public void newGame(String type, String characterName, String weaponName) {
+public class Client
+{
+    WeaponPanelIF weaponPanel;
+    CharacterPanelIF characterPanel;
+
+    public static void main(String[] args)
+    {
         FactoryMaker myFactory;
-        myFactory = FactoryMaker.getInstance();
-        ModeFactoryIF absFactory;
-        if (type == "beginner")
-            absFactory = myFactory.createFactory(FactoryMaker.BEGINNER);
-        else if (type == "intermediate")
-            absFactory = myFactory.createFactory(FactoryMaker.INTERMEDIATE);
-        else
-            absFactory = myFactory.createFactory(FactoryMaker.ADVANCED);
-
-        CharacterIF character = absFactory.createCharacter(characterName);
-        WeaponIF weapon = absFactory.createWeapon(weaponName);
-
-
-
-
+        //myFactory = FactoryMaker.getInstance();
     }
 
-
-    public static void main(String[] args) {
-
-        Client beginnerGame = new Client();
-        Client intermediateGame = new Client();
-        Client advancedGame = new Client();
-
-        beginnerGame.newGame("beginner", "Justin", "Pea-Shooter");
-        intermediateGame.newGame("intermediate", "Anthony", "Destroyer");
-        advancedGame.newGame("advanced", "Shane", "Shane-Saw");
-
-
-
-
-
-
-
-    }
+//    public void newGame(String type, String characterName, String weaponName) {
+//
+//        ModeFactoryIF absFactory;
+//        if (type == "beginner")
+//            absFactory = myFactory.createFactory(FactoryMaker.Mode.BEGINNER);
+//        else if (type == "intermediate")
+//            absFactory = myFactory.createFactory(FactoryMaker.Mode.INTERMEDIATE);
+//        else
+//            absFactory = myFactory.createFactory(FactoryMaker.Mode.ADVANCED);
+//
+//        CharacterIF character = absFactory.createCharacter(characterName);
+//        WeaponIF weapon = absFactory.createWeapon(weaponName);
+//
+//    }
 }

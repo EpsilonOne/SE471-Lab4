@@ -1,18 +1,16 @@
 package Lab4;
 
-public class BeginnerCharacter implements CharacterIF {
+public class IntermediateCharacterPanel implements CharacterPanelIF {
 
     /****Attributes****/
     private String name;
-
-    /****Methods****/
-    //setter
     @Override
     public void setCharacter(String n) {
         this.name = n;
+        System.out.println(name + " has entered the game.");
+
     }
 
-    //getter
     @Override
     public String getCharacter() {
         return name;

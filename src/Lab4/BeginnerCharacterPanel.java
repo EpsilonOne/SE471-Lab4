@@ -1,6 +1,6 @@
 package Lab4;
 
-public class AdvancedCharacter implements CharacterIF {
+public class BeginnerCharacterPanel implements CharacterPanelIF {
 
     /****Attributes****/
     private String name;
@@ -10,7 +10,6 @@ public class AdvancedCharacter implements CharacterIF {
     @Override
     public void setCharacter(String n) {
         this.name = n;
-
     }
 
     //getter
